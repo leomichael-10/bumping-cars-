@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Dodgem Arena Simulation</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #14161a;
+    overflow: hidden;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+  canvas {
+    display: block;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<!-- p5.js for rendering (vendored locally -- see /lib) -->
+<script src="lib/p5.min.js"></script>
+<!-- matter.js for physics (vendored locally -- see /lib) -->
+<script src="lib/matter.min.js"></script>
+
+<!-- Config first: constants + Matter.js aliases used by every module below -->
+<script src="js/config.js"></script>
+
+<!-- Arena -->
+<script src="js/Arena.js"></script>
+
+<!-- Extensions (must load before Car.js/PursuitBehaviour.js, which compose/use them) -->
+<script src="js/extensions/DamageModel.js"></script>
+<script src="js/extensions/TyreModel.js"></script>
+<script src="js/extensions/SkidLayer.js"></script>
+<script src="js/extensions/RaycastSensor.js"></script>
+
+<!-- Behaviours (strategy pattern -- must load before OpponentCar/CarFactory/GameManager use them) -->
+<script src="js/behaviours/StaticBehaviour.js"></script>
+<script src="js/behaviours/StraightBehaviour.js"></script>
+<script src="js/behaviours/SineBehaviour.js"></script>
+<script src="js/behaviours/FreeBounceBehaviour.js"></script>
+<script src="js/behaviours/PursuitBehaviour.js"></script>
+
+<!-- Cars (base class before subclasses) -->
+<script src="js/Car.js"></script>
+<script src="js/PlayerCar.js"></script>
+<script src="js/OpponentCar.js"></script>
+
+<!-- Animations (Trail is used by Car.js at runtime, ImpactFlash/BarrierPulse by AnimationManager) -->
+<script src="js/animations/Trail.js"></script>
+<script src="js/animations/ImpactFlash.js"></script>
+<script src="js/animations/BarrierPulse.js"></script>
+<script src="js/AnimationManager.js"></script>
+
+<!-- Spawning, collisions, round orchestration, HUD -->
+<script src="js/CarFactory.js"></script>
+<script src="js/CollisionManager.js"></script>
+<script src="js/SurvivalMode.js"></script>
+<script src="js/GameManager.js"></script>
+<script src="js/HUD.js"></script>
+
+<!-- Thin entry point -->
+<script src="sketch.js"></script>
+</body>
+</html>
